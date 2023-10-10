@@ -43,7 +43,6 @@ $hotels = [
 ];
 
 var_dump($_GET);
-
 ?>
 
 <!doctype html>
@@ -76,7 +75,7 @@ var_dump($_GET);
                 <div>
                     <div class="mb-3">
                         <select class="form-select form-select-lg" name="vote" id="vote">
-                            <option value=""> <?= !isset($_GET['vote']) && $_GET['vote'] === '' ? 'selected' : ''; ?> Vote</option>
+                            <option value="" selected> Vote</option>
                             <option value="1" <?= isset($_GET['vote']) && $_GET['vote'] === '1' ? 'selected' : ''; ?>>1</option>
                             <option value="2" <?= isset($_GET['vote']) && $_GET['vote'] === '2' ? 'selected' : ''; ?>>2</option>
                             <option value="3" <?= isset($_GET['vote']) && $_GET['vote'] === '3' ? 'selected' : ''; ?>>3</option>
@@ -120,7 +119,14 @@ var_dump($_GET);
                                 <td><?php echo $parking; ?></td>
                                 <td><?php echo $hotel['vote']; ?></td>
                                 <td><?php echo $hotel['distance_to_center']; ?></td>
-                            <?php elseif (!isset($_GET['parking']) && ($_GET['vote']) <= $hotel['vote']) : ?>
+                            <?php elseif (!isset($_GET['parking']) && isset($_GET['vote']) && ($_GET['vote']) <= $hotel['vote']) : ?>
+                                <td><?php echo $hotel['name']; ?></td>
+                                <td><?php echo $hotel['description']; ?></td>
+                                <td><?php echo $parking; ?></td>
+                                <td><?php echo $hotel['vote']; ?></td>
+                                <td><?php echo $hotel['distance_to_center']; ?></td>
+
+                            <?php elseif (!isset($_GET['parking']) && !isset($_GET['vote'])) : ?>
                                 <td><?php echo $hotel['name']; ?></td>
                                 <td><?php echo $hotel['description']; ?></td>
                                 <td><?php echo $parking; ?></td>
