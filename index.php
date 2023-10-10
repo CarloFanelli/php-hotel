@@ -67,7 +67,7 @@ var_dump($_GET);
         <div class="row my-3">
             <form class="d-flex gap-4 justify-content-center align-items-center" action="" method="GET">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="true" id="parking" name="parking">
+                    <input class="form-check-input" type="checkbox" value="true" id="parking" name="parking" <?= isset($_GET['parking']) ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="parking">
                         Parcheggio
                     </label>
@@ -76,12 +76,12 @@ var_dump($_GET);
                 <div>
                     <div class="mb-3">
                         <select class="form-select form-select-lg" name="vote" id="vote">
-                            <option selected value="">Vote</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            <option value=""> <?= !isset($_GET['vote']) && $_GET['vote'] === '' ? 'selected' : ''; ?> Vote</option>
+                            <option value="1" <?= isset($_GET['vote']) && $_GET['vote'] === '1' ? 'selected' : ''; ?>>1</option>
+                            <option value="2" <?= isset($_GET['vote']) && $_GET['vote'] === '2' ? 'selected' : ''; ?>>2</option>
+                            <option value="3" <?= isset($_GET['vote']) && $_GET['vote'] === '3' ? 'selected' : ''; ?>>3</option>
+                            <option value="4" <?= isset($_GET['vote']) && $_GET['vote'] === '4' ? 'selected' : ''; ?>>4</option>
+                            <option value="5" <?= isset($_GET['vote']) && $_GET['vote'] === '5' ? 'selected' : ''; ?>>5</option>
                         </select>
                     </div>
 
